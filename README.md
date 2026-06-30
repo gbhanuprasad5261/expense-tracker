@@ -1,27 +1,35 @@
 # Expense Tracker API
 
-A Spring Boot backend project for managing expenses using REST APIs.
+A Spring Boot REST API for managing daily expenses with complete CRUD functionality.
 
 ## Features
-- Add expense
-- Get all expenses
-- Update expense
-- Delete expense
+- Create Expense
+- View All Expenses
+- View Expense by ID
+- Update Expense
+- Delete Expense
+- DTO Pattern
+- Service Layer Architecture
+- Global Exception Handling
+- Spring Data JPA
+- MySQL Database
 
-## Technologies Used
-- Java
+## Tech Stack
+- Java 17
 - Spring Boot
 - Spring Data JPA
-- H2 Database
+- Hibernate
+- MySQL
 - Maven
 - Postman
+- Git & GitHub
 
 ## API Endpoints
 
-POST /expenses  
-GET /expenses  
-PUT /expenses/{id}  
-DELETE /expenses/{id}
-
-## Author
-Bhanu Prasad
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /expenses | Create Expense |
+| GET | /expenses | Get All Expenses |
+| GET | /expenses/{id} | Get Expense by ID |
+| PUT | /expenses/{id} | Update Expense |
+| DELETE | /expenses/{id} | Delete Expense |
