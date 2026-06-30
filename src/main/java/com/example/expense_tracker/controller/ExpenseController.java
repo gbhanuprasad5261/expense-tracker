@@ -1,9 +1,12 @@
 package com.example.expense_tracker.controller;
 
 import com.example.expense_tracker.entity.Expense;
-import com.example.expense_tracker.repository.ExpenseRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.example.expense_tracker.service.ExpenseService;
+
+import com.example.expense_tracker.dto.ExpenseDTO;
 
 import java.util.List;
 
@@ -12,34 +15,33 @@ import java.util.List;
 public class ExpenseController {
 
     @Autowired
-    private ExpenseRepository expenseRepository;
+     private ExpenseService expenseService;
 
     @PostMapping
-    public Expense addExpense(@RequestBody Expense expense) {
-        return expenseRepository.save(expense);
-    }
+public Expense addExpense(@RequestBody ExpenseDTO expenseDTO) {
+    return expenseService.addExpense(expenseDTO);
+}
 
     @GetMapping
     public List<Expense> getAllExpenses() {
-        return expenseRepository.findAll();
+        return expenseService.getAllExpenses();
     }
-    @DeleteMapping("/{id}")
+   @DeleteMapping("/{id}")
 public String deleteExpense(@PathVariable Long id) {
 
-    expenseRepository.deleteById(id);
+    expenseService.deleteExpense(id);
 
     return "Expense deleted successfully";
-    }
-    @PutMapping("/{id}")
+}
+   @PutMapping("/{id}")
 public Expense updateExpense(@PathVariable Long id,
                              @RequestBody Expense updatedExpense) {
 
-    Expense expense = expenseRepository.findById(id).orElseThrow();
-
-    expense.setTitle(updatedExpense.getTitle());
-    expense.setAmount(updatedExpense.getAmount());
-    expense.setCategory(updatedExpense.getCategory());
-
-    return expenseRepository.save(expense);
+    return expenseService.updateExpense(id, updatedExpense);
 }
+@GetMapping("/{id}")
+public Expense getExpenseById(@PathVariable Long id) {
+    return expenseService.getExpenseById(id);
+}
+
 }
