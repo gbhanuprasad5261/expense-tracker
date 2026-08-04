@@ -1,122 +1,260 @@
-# Expense Tracker API
+# 💰 Expense Tracker REST API
 
 ![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-REST%20API-brightgreen?logo=spring)
-![MySQL](https://img.shields.io/badge/MySQL-Database-blue?logo=mysql)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.6-brightgreen?logo=spring)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql)
+![Hibernate](https://img.shields.io/badge/Hibernate-ORM-59666C?logo=hibernate)
 ![Maven](https://img.shields.io/badge/Build-Maven-red?logo=apachemaven)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
-A Spring Boot REST API for managing daily expenses with complete CRUD functionality, built using DTO pattern, service layer architecture, and global exception handling.
+A backend **Expense Tracker REST API** built with **Java 17**, **Spring Boot**, **Spring Data JPA**, **Hibernate**, and **MySQL**. The application follows a clean layered architecture and provides RESTful APIs for managing daily expenses with full CRUD functionality.
 
-## Features
-- Create Expense
-- View All Expenses
-- View Expense by ID
-- Update Expense
-- Delete Expense
-- DTO Pattern
-- Service Layer Architecture
-- Global Exception Handling
-- Spring Data JPA
-- MySQL Database
+---
 
-## Tech Stack
-- Java 17
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- MySQL
-- Maven
-- Postman
-- Git & GitHub
+## 🚀 Features
 
-## API Endpoints
+- ✅ Create, Read, Update and Delete Expenses
+- ✅ RESTful API Design
+- ✅ Layered Architecture (Controller → Service → Repository)
+- ✅ DTO Pattern
+- ✅ Global Exception Handling
+- ✅ Spring Data JPA
+- ✅ Hibernate ORM
+- ✅ MySQL Database Integration
+- ✅ Maven Build Tool
+- ✅ Postman API Testing
+- ✅ Git & GitHub Version Control
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Version |
+|------------|----------|
+| Java | 17 |
+| Spring Boot | 4.0.6 |
+| Spring Data JPA | Latest |
+| Hibernate | ORM |
+| MySQL | 8.x |
+| Maven | Latest |
+| Postman | API Testing |
+| Git | Version Control |
+
+---
+
+## 📂 Project Structure
+
+```text
+src
+└── main
+    ├── java
+    │   └── com.example.expense_tracker
+    │       ├── controller
+    │       ├── dto
+    │       ├── entity
+    │       ├── exception
+    │       ├── repository
+    │       ├── service
+    │       └── ExpenseTrackerApplication.java
+    └── resources
+        └── application.properties
+```
+
+---
+
+## 🏗️ Architecture
+
+```text
+Client
+   │
+   ▼
+ExpenseController
+   │
+   ▼
+ExpenseService
+   │
+   ▼
+ExpenseRepository
+   │
+   ▼
+MySQL Database
+```
+
+---
+
+## 📌 REST API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | /expenses | Create Expense |
-| GET | /expenses | Get All Expenses |
-| GET | /expenses/{id} | Get Expense by ID |
-| PUT | /expenses/{id} | Update Expense |
-| DELETE | /expenses/{id} | Delete Expense |
+| POST | `/expenses` | Create Expense |
+| GET | `/expenses` | Get All Expenses |
+| GET | `/expenses/{id}` | Get Expense by ID |
+| PUT | `/expenses/{id}` | Update Expense |
+| DELETE | `/expenses/{id}` | Delete Expense |
 
-## Project Structure
-src/main/java/com/example/expense_tracker
-├── controller       → REST endpoints (ExpenseController)
-├── dto              → Data Transfer Objects (ExpenseDTO)
-├── entity           → JPA Entities (Expense)
-├── exception        → Global Exception Handling
-├── repository       → Spring Data JPA Repository
-└── service          → Business Logic Layer
+---
 
-## Getting Started
+## ⚙️ Getting Started
 
 ### Prerequisites
+
 - Java 17
 - Maven
-- MySQL
+- MySQL Server
 
-### Setup
+### Clone Repository
 
-1. Clone the repository
 ```bash
-   git clone https://github.com/gbhanuprasad5261/expense-tracker.git
-   cd expense-tracker
+git clone https://github.com/gbhanuprasad5261/expense-tracker.git
+cd expense-tracker
 ```
 
-2. Configure your database in `src/main/resources/application.properties`
+### Configure Database
+
+Update `src/main/resources/application.properties`
+
 ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/expense_tracker
-   spring.datasource.username=your_username
-   spring.datasource.password=your_password
-   spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/expense_tracker
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+
+spring.jpa.hibernate.ddl-auto=update
 ```
 
-3. Run the application
+### Run the Application
+
 ```bash
-   mvn spring-boot:run
+mvn spring-boot:run
 ```
 
-4. The API will be available at `http://localhost:8080`
+Application starts at:
 
-## Sample Request/Response
+```
+http://localhost:8080
+```
 
-**POST** `/expenses`
+---
 
-Request body:
+## 📬 Sample API Request
+
+### POST `/expenses`
+
+Request
+
 ```json
 {
-  "title": "Food",
+  "title": "Lunch",
   "amount": 250,
-  "category": "Lunch"
+  "category": "Food"
 }
 ```
 
-Response:
+Response
+
 ```json
 {
-  "id": 7,
-  "title": "Food",
+  "id": 1,
+  "title": "Lunch",
   "amount": 250.0,
-  "category": "Lunch"
+  "category": "Food"
 }
 ```
 
-## Screenshots
+---
 
-### REST Controller – CRUD Endpoints
-![Controller Code](Images/controller-code.png)
+## 📸 API Screenshots
 
-### POST /expenses – Create Expense
-![POST Expense](Images/postman-post-expense.png)
+### Create Expense (POST)
 
-### GET /expenses/{id}
-![GET Expense](Images/get-expense.png)
+![POST](Images/postman-post-expense.png)
 
-### PUT /expenses/{id} – Update Expense
-![PUT Expense](Images/put-expense.png)
+---
 
-## Author
+### Get All Expenses (GET)
 
-**Bhanu Prasad**
-- GitHub: [gbhanuprasad5261](https://github.com/gbhanuprasad5261)
-- LinkedIn: [g-bhanu-prasad](https://linkedin.com/in/g-bhanu-prasad-66ab1b225)
+![GET ALL](Images/get-all-expenses.png)
+
+---
+
+### Get Expense By ID
+
+![GET BY ID](Images/get-expense.png)
+
+---
+
+### Update Expense (PUT)
+
+![PUT](Images/put-expense.png)
+
+---
+
+### Delete Expense (DELETE)
+
+![DELETE](Images/delete-expense.png)
+
+---
+
+### Controller Implementation
+
+![Controller](Images/controller-code.png)
+
+---
+
+## 🎯 Learning Outcomes
+
+This project helped me gain hands-on experience in:
+
+- Spring Boot REST API Development
+- CRUD Operations
+- Spring Data JPA & Hibernate
+- DTO Pattern
+- Layered Architecture
+- Global Exception Handling
+- MySQL Integration
+- API Testing using Postman
+- Git & GitHub Workflow
+- Maven Project Management
+
+---
+
+# 🚀 Future Enhancements
+
+The following features are planned for future releases:
+
+- 🔹 Bean Validation (`@Valid`, `@NotBlank`, `@Positive`)
+- 🔹 Swagger / OpenAPI Documentation
+- 🔹 Pagination & Sorting
+- 🔹 Search & Filter APIs
+- 🔹 Spring Security with JWT Authentication
+- 🔹 Docker Containerization
+- 🔹 GitHub Actions (CI/CD)
+- 🔹 Unit Testing with JUnit & Mockito
+- 🔹 Logging using SLF4J & Logback
+- 🔹 Cloud Deployment (Render / AWS)
+- 🔹 Expense Analytics Dashboard
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+Feel free to fork this repository and submit a pull request.
+
+---
+
+## 👨‍💻 Author
+
+**G Bhanu Prasad**
+
+- 💼 LinkedIn: https://linkedin.com/in/g-bhanu-prasad-66ab1b225
+- 💻 GitHub: https://github.com/gbhanuprasad5261
+- 📧 Email: gbhanuprasad1236@gmail.com
+
+---
+
+## ⭐ Support
+
+If you found this project useful, please consider giving it a ⭐ on GitHub.
+
+It motivates me to continue building and improving open-source Java projects.
